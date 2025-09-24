@@ -40,14 +40,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="min-h-screen bg-background text-foreground">
+<body class="min-h-screen bg-background text-foreground dark">
     <!-- Header -->
-    <header class="header sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
+    <header class="header sticky top-0 z-50 w-full border-b backdrop-blur">
         <div class="container flex h-16 items-center justify-between px-4">
             <!-- Logo -->
             <a href="index.html" class="flex items-center space-x-2 logo">
-                <div class="flex items-center justify-center rounded-md bg-logo"></div>
-                <span class="font-medium text-lg sm:inline-block ww"><em>W</em>ager<em>W</em>eb</span>
+                <!--div class="flex items-center justify-center rounded-md bg-logo"></div-->
+                <span class="font-medium text-lg sm:inline-block ww">WagerWeb</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -56,33 +56,16 @@
                 <a href="#" class="hover:text-red-600 transition-colors">Live Betting</a>
                 <a href="#" class="hover:text-red-600 transition-colors">Casino</a>
                 <a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a>
-                <a href="#" class="hover:text-red-600 transition-colors">Banking</a>
             </nav>
 
             <!-- Desktop Actions -->
             <div class="hidden md:flex items-center space-x-3">
-                <button id="darkModeToggle" class="btn-ghost p-2">
-                    <svg id="moonIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <svg id="sunIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </button>
                 <button class="btn btn-outline">Login</button>
                 <button class="btn btn-primary">Register</button>
             </div>
 
             <!-- Mobile Menu Button -->
             <div class="flex md:hidden items-center space-x-2">
-                <button id="darkModeToggleMobile" class="btn-ghost p-2">
-                    <svg id="moonIconMobile" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <svg id="sunIconMobile" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </button>
                 <button id="mobileMenuToggle" class="btn-ghost p-2">
                     <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -130,53 +113,53 @@
                 </div>
 
                 <!-- Featured Promotion Banner -->
-                <div class="mt-12 max-w-md bg-red-600 rounded-lg p-6 text-white hero-promo">
-                    <p class="text-red-100 mb-3">Get up to $500 bonus on your first deposit</p>
+                <div class="mt-12 max-w-md bg-red-800 rounded-xl p-6 text-white hero-promo">
+                    <p class="text-white text-2xl font-bold mb-3">Get up to $500 bonus on your first deposit</p>
                     <button class="btn btn-secondary bg-white text-red-600 hover:bg-gray-100">Claim Now</button>
                 </div>
             </div>
         </section>
 
         <!-- Quick Links -->
-        <section class="py-12 bg-muted/20">
+        <section class="py-20 bg-muted/20">
             <div class="container px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Sportsbook -->
-                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer rounded-xl">
                         <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-trophy text-white text-xl"></i>
                         </div>
-                        <h3 class="text-lg font-medium mb-2">Sportsbook</h3>
+                        <h3 class="text-xl font-medium mb-2">Sportsbook</h3>
                         <p class="text-sm text-muted-foreground mb-4">Comprehensive sports betting with competitive odds</p>
                         <button class="btn btn-outline w-full">Learn More</button>
                     </div>
 
                     <!-- Casino -->
-                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer rounded-xl">
                         <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-dice text-white text-xl"></i>
                         </div>
-                        <h3 class="text-lg font-medium mb-2">Casino</h3>
-                        <p class="text-sm text-muted-foreground mb-4">Slots, table games, and live dealer experiences</p>
+                        <h3 class="text-xl font-medium mb-2">Casino</h3>
+                        <p class="text-sm text-muted-foreground mb-4">Slots, table games, live dealer experiences and much more</p>
                         <button class="btn btn-outline w-full">Learn More</button>
                     </div>
 
                     <!-- Racebook -->
-                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer rounded-xl">
                         <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-horse-head text-white text-xl"></i>
                         </div>
-                        <h3 class="text-lg font-medium mb-2">Racebook</h3>
+                        <h3 class="text-xl font-medium mb-2">Racebook</h3>
                         <p class="text-sm text-muted-foreground mb-4">Horse racing, greyhounds, and motorsports betting</p>
                         <button class="btn btn-outline w-full">Learn More</button>
                     </div>
 
                     <!-- E-Sports -->
-                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="card p-6 text-center hover:shadow-md transition-shadow cursor-pointer rounded-xl">
                         <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-gamepad text-white text-xl"></i>
                         </div>
-                        <h3 class="text-lg font-medium mb-2">E-Sports</h3>
+                        <h3 class="text-xl font-medium mb-2">E-Sports</h3>
                         <p class="text-sm text-muted-foreground mb-4">Professional gaming tournaments and competitions</p>
                         <button class="btn btn-outline w-full">Learn More</button>
                     </div>
@@ -184,23 +167,93 @@
             </div>
         </section>
 
+        <!-- Secondary Hero Section -->
+        <section class="relative py-16 lg:py-24 overflow-hidden">
+            <!-- Background with overlay -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#111111]/90 to-red-950/80 z-10"></div>
+            </div>
+            
+            <!-- Content -->
+            <div class="relative z-20 container px-4">
+                <div class="max-w-4xl mx-auto text-center text-white">
+                    <div class="mb-8">
+                        <span class="inline-block px-4 py-2 bg-black border border-red-500/30 rounded-full text-white text-sm font-medium mb-6">
+                            🏆 Trusted Since 1994
+                        </span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                        Experience the <span class="text-red-500">Ultimate</span><br>
+                        Sports Betting Platform
+                    </h2>
+                    
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Join millions of satisfied bettors who trust WagerWeb for competitive odds, 
+                        instant payouts, and unmatched customer service across all major sports.
+                    </p>
+                    
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-white/20">
+                            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-bolt text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Instant Payouts</h3>
+                            <p class="text-gray-300 text-sm">Fast and secure withdrawals with multiple payment options available 24/7</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-white/20">
+                            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Best Odds</h3>
+                            <p class="text-gray-300 text-sm">Competitive odds across all sports with live betting and real-time updates</p>
+                        </div>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-white/20">
+                            <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-headset text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">24/7 Support</h3>
+                            <p class="text-gray-300 text-sm">Expert customer support available around the clock via live chat and phone</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button class="btn btn-primary px-8 py-3 text-lg font-semibold">
+                            Start Betting Now
+                        </button>
+                        <button class="btn btn-outline border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 text-lg font-semibold">
+                            View Live Odds
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Decorative Elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-red-500/20 rounded-full blur-xl"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-red-600/10 rounded-full blur-2xl"></div>
+        </section>
+
         <!-- Promotions -->
         <section id="promotions" class="py-12 bg-muted/20">
             <div class="container px-4">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-medium mb-4">Exclusive Promotions</h2>
-                    <p class="text-muted-foreground max-w-2xl mx-auto">
+                    <p class="text-muted-foreground max-w-3xl mx-auto">
                         Take advantage of our latest offers and boost your winnings with these exclusive promotions.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Welcome Bonus -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
-                            <div class="badge bg-white/20 text-white mb-4">New Player</div>
+                    <div class="rounded-xl card overflow-hidden">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
+                            <div class="badge inline-block bg-white/20 text-white mb-4 px-4">New Player</div>
                             <h3 class="text-xl font-medium mb-2">Welcome Bonus</h3>
-                            <p class="text-red-100">Up to $500 first deposit bonus</p>
+                            <p class="text-white text-2xl font-bold">Up to $500 initial bonus</p>
                         </div>
                         <div class="p-6">
                             <p class="text-sm text-muted-foreground mb-4">
@@ -211,11 +264,11 @@
                     </div>
 
                     <!-- Risk-Free Bet -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
-                            <div class="badge bg-white/20 text-white mb-4">Limited Time</div>
+                    <div class="rounded-xl card overflow-hidden">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
+                            <div class="badge inline-block bg-white/20 text-white mb-4 px-4">Limited Time</div>
                             <h3 class="text-xl font-medium mb-2">Risk-Free Bet</h3>
-                            <p class="text-red-100">$100 risk-free first bet</p>
+                            <p class="text-white text-2xl font-bold">$100 risk-free first bet</p>
                         </div>
                         <div class="p-6">
                             <p class="text-sm text-muted-foreground mb-4">
@@ -226,11 +279,11 @@
                     </div>
 
                     <!-- VIP Program -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
-                            <div class="badge bg-white/20 text-white mb-4">Exclusive</div>
+                    <div class="rounded-xl card overflow-hidden">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
+                            <div class="badge inline-block bg-white/20 text-white mb-4 px-4">Exclusive</div>
                             <h3 class="text-xl font-medium mb-2">Referal Program</h3>
-                            <p class="text-red-100">Exclusive rewards & benefits</p>
+                            <p class="text-white text-2xl font-bold">Exclusive rewards & benefits</p>
                         </div>
                         <div class="p-6">
                             <p class="text-sm text-muted-foreground mb-4">

@@ -40,14 +40,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="min-h-screen bg-background text-foreground">
+<body class="min-h-screen bg-background text-foreground dark">
     <!-- Header -->
-    <header class="header sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
+    <header class="header sticky top-0 z-50 w-full border-b backdrop-blur">
         <div class="container flex h-16 items-center justify-between px-4">
             <!-- Logo -->
             <a href="index.html" class="flex items-center space-x-2 logo">
-                <div class="flex items-center justify-center rounded-md bg-logo"></div>
-                <span class="font-medium text-lg sm:inline-block ww"><em>W</em>ager<em>W</em>eb</span>
+                <!--div class="flex items-center justify-center rounded-md bg-logo"></div-->
+                <span class="font-medium text-lg sm:inline-block ww">WagerWeb</span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -56,33 +56,16 @@
                 <a href="#" class="hover:text-red-600 transition-colors">Live Betting</a>
                 <a href="#" class="hover:text-red-600 transition-colors">Casino</a>
                 <a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a>
-                <a href="#" class="hover:text-red-600 transition-colors">Banking</a>
             </nav>
 
             <!-- Desktop Actions -->
             <div class="hidden md:flex items-center space-x-3">
-                <button id="darkModeToggle" class="btn-ghost p-2">
-                    <svg id="moonIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <svg id="sunIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </button>
                 <button class="btn btn-outline">Login</button>
                 <button class="btn btn-primary">Register</button>
             </div>
 
             <!-- Mobile Menu Button -->
             <div class="flex md:hidden items-center space-x-2">
-                <button id="darkModeToggleMobile" class="btn-ghost p-2">
-                    <svg id="moonIconMobile" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
-                    <svg id="sunIconMobile" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </button>
                 <button id="mobileMenuToggle" class="btn-ghost p-2">
                     <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -168,8 +151,8 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Welcome Bonus -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">New Player</div>
                             <h3 class="text-xl font-medium mb-2">Welcome Bonus</h3>
                             <p class="text-red-100">Up to $1,000 first deposit bonus</p>
@@ -187,8 +170,8 @@
                     </div>
 
                     <!-- Risk-Free Bet -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">Limited Time</div>
                             <h3 class="text-xl font-medium mb-2">Risk-Free Bet</h3>
                             <p class="text-blue-100">$100 risk-free first bet</p>
@@ -206,8 +189,8 @@
                     </div>
 
                     <!-- VIP Program -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">Exclusive</div>
                             <h3 class="text-xl font-medium mb-2">VIP Program</h3>
                             <p class="text-purple-100">Exclusive rewards & benefits</p>
@@ -225,8 +208,8 @@
                     </div>
 
                     <!-- Reload Bonus -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">Weekly</div>
                             <h3 class="text-xl font-medium mb-2">Reload Bonus</h3>
                             <p class="text-green-100">25% bonus on deposits</p>
@@ -244,8 +227,8 @@
                     </div>
 
                     <!-- Free Bets -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">Special</div>
                             <h3 class="text-xl font-medium mb-2">Free Bets</h3>
                             <p class="text-orange-100">Daily free bet opportunities</p>
@@ -263,8 +246,8 @@
                     </div>
 
                     <!-- Loyalty Points -->
-                    <div class="card overflow-hidden">
-                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                    <div class="card overflow-hidden rounded-xl">
+                        <div class="h-40 bg-gradient-to-br from-red-800 to-red-900 p-6 text-white">
                             <div class="badge bg-white/20 text-white mb-4">Loyalty</div>
                             <h3 class="text-xl font-medium mb-2">Loyalty Points</h3>
                             <p class="text-indigo-100">Earn points with every bet</p>

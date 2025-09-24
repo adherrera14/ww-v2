@@ -1,47 +1,3 @@
-// Dark mode functionality
-let isDarkMode = false;
-
-function toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-    
-    // Toggle dark class on body
-    if (isDarkMode) {
-        document.body.classList.add('dark');
-    } else {
-        document.body.classList.remove('dark');
-    }
-    
-    // Update icon visibility for desktop
-    const moonIcon = document.getElementById('moonIcon');
-    const sunIcon = document.getElementById('sunIcon');
-    
-    if (moonIcon && sunIcon) {
-        if (isDarkMode) {
-            moonIcon.classList.add('hidden');
-            sunIcon.classList.remove('hidden');
-        } else {
-            moonIcon.classList.remove('hidden');
-            sunIcon.classList.add('hidden');
-        }
-    }
-    
-    // Update icon visibility for mobile
-    const moonIconMobile = document.getElementById('moonIconMobile');
-    const sunIconMobile = document.getElementById('sunIconMobile');
-    
-    if (moonIconMobile && sunIconMobile) {
-        if (isDarkMode) {
-            moonIconMobile.classList.add('hidden');
-            sunIconMobile.classList.remove('hidden');
-        } else {
-            moonIconMobile.classList.remove('hidden');
-            sunIconMobile.classList.add('hidden');
-        }
-    }
-    
-    // Store preference in localStorage
-    localStorage.setItem('darkMode', isDarkMode.toString());
-}
 
 // Mobile menu functionality
 let isMobileMenuOpen = false;
@@ -74,40 +30,7 @@ function toggleMobileMenu() {
 
 // Initialize the application
 function init() {
-    // Check for stored dark mode preference
-    const storedDarkMode = localStorage.getItem('darkMode');
-    if (storedDarkMode === 'true') {
-        isDarkMode = true;
-        document.body.classList.add('dark');
-        
-        // Update icons
-        const moonIcon = document.getElementById('moonIcon');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIconMobile = document.getElementById('moonIconMobile');
-        const sunIconMobile = document.getElementById('sunIconMobile');
-        
-        if (moonIcon && sunIcon) {
-            moonIcon.classList.add('hidden');
-            sunIcon.classList.remove('hidden');
-        }
-        
-        if (moonIconMobile && sunIconMobile) {
-            moonIconMobile.classList.add('hidden');
-            sunIconMobile.classList.remove('hidden');
-        }
-    }
-    
-    // Add event listeners for dark mode toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
-    
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
-    
-    if (darkModeToggleMobile) {
-        darkModeToggleMobile.addEventListener('click', toggleDarkMode);
-    }
+    // Dark mode is always enabled, no initialization needed
     
     // Add event listener for mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
