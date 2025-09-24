@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WagerWeb - Online Sports Betting Since 1994</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Bai Jamjuree', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              'background': 'var(--background)',
+              'foreground': 'var(--foreground)',
+              'muted': {
+                DEFAULT: 'var(--muted)',
+                'foreground': 'var(--muted-foreground)'
+              },
+              'card': {
+                DEFAULT: 'var(--card)',
+                'foreground': 'var(--card-foreground)'
+              },
+              'border': 'var(--border)'
+            }
+          },
+          container: {
+            center: true,
+            padding: '1rem',
+          }
+        },
+        darkMode: 'class'
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="header sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur">
+        <div class="container flex h-16 items-center justify-between px-4">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 logo">
+                <div class="flex items-center justify-center rounded-md bg-logo"></div>
+                <span class="font-medium text-lg sm:inline-block ww"><em>W</em>ager<em>W</em>eb</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#" class="hover:text-red-600 transition-colors">Sports</a>
+                <a href="#" class="hover:text-red-600 transition-colors">Live Betting</a>
+                <a href="#" class="hover:text-red-600 transition-colors">Casino</a>
+                <a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a>
+                <a href="#" class="hover:text-red-600 transition-colors">Banking</a>
+            </nav>
+
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button id="darkModeToggle" class="btn-ghost p-2">
+                    <svg id="moonIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                    <svg id="sunIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </button>
+                <button class="btn btn-outline">Login</button>
+                <button class="btn btn-primary">Register</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex md:hidden items-center space-x-2">
+                <button id="darkModeToggleMobile" class="btn-ghost p-2">
+                    <svg id="moonIconMobile" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                    <svg id="sunIconMobile" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </button>
+                <button id="mobileMenuToggle" class="btn-ghost p-2">
+                    <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="closeIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="md:hidden border-t bg-background hidden">
+            <nav class="container px-4 py-4 space-y-3">
+                <a href="#" class="block py-2 hover:text-red-600 transition-colors">Sports</a>
+                <a href="#" class="block py-2 hover:text-red-600 transition-colors">Live Betting</a>
+                <a href="#" class="block py-2 hover:text-red-600 transition-colors">Casino</a>
+                <a href="promotions.html" class="block py-2 hover:text-red-600 transition-colors">Promotions</a>
+                <a href="#" class="block py-2 hover:text-red-600 transition-colors">Banking</a>
+                <div class="flex space-x-3 pt-3">
+                    <button class="btn btn-outline flex-1">Login</button>
+                    <button class="btn btn-primary flex-1">Register</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-muted/20 border-b">
+        <div class="container px-4 py-2">
+            <nav class="text-sm">
+                <a href="index.html" class="text-red-600 hover:underline">Home</a>
+                <span class="mx-2 text-muted-foreground">/</span>
+                <span>Promotions</span>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero promos-hero relative overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="hero-light.jpg" alt="WagerWeb" class="w-full h-full object-cover hero-bg-light">
+                <img src="hero-dark.jpg" alt="WagerWeb" class="w-full h-full object-cover hero-bg-dark">
+                <div class="absolute inset-0"></div>
+            </div>
+            
+            <div class="relative container px-4 py-16 lg:py-24">
+                <div class="max-w-4xl">
+                    <h1 class="text-4xl lg:text-6xl font-boldmb-6">
+                        <span class="hero-accent">100%</span> Welcome Bonus
+                    </h1>
+                    <p class="text-xl mb-8 max-w-2xl">
+                        Maximize your betting potential with our exclusive promotions, bonuses, and special offers designed to boost your winnings.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 py-4">
+                        <button class="btn btn-primary btn-lg px-8">Claim Bonus Now</button>
+                    </div>
+                </div>
+
+                <!-- Featured Stats -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-white text-center">
+                        <div class="text-2xl font-bold text-red-600">100%</div>
+                        <div class="text-sm">Welcome Bonus</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-white text-center">
+                        <div class="text-2xl font-bold text-red-600">$500</div>
+                        <div class="text-sm">First Deposit Match</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-white text-center">
+                        <div class="text-2xl font-bold text-red-600">24/7</div>
+                        <div class="text-sm">Live Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Promotions -->
+        <section class="py-12  bg-muted/20">
+            <div class="container px-4">
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Welcome Bonus -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">New Player</div>
+                            <h3 class="text-xl font-medium mb-2">Welcome Bonus</h3>
+                            <p class="text-red-100">Up to $1,000 first deposit bonus</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Get a 100% match bonus on your first deposit up to $1,000. Start your betting journey with extra funds to explore all our markets.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Expires:</span>
+                                <span class="text-sm text-muted-foreground">Dec 31, 2024</span>
+                            </div>
+                            <button class="btn btn-primary w-full">Claim Bonus</button>
+                        </div>
+                    </div>
+
+                    <!-- Risk-Free Bet -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">Limited Time</div>
+                            <h3 class="text-xl font-medium mb-2">Risk-Free Bet</h3>
+                            <p class="text-blue-100">$100 risk-free first bet</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Place your first bet with confidence. If it loses, we'll refund your stake up to $100 in bonus credits.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Expires:</span>
+                                <span class="text-sm text-muted-foreground">Jan 15, 2025</span>
+                            </div>
+                            <button class="btn btn-primary w-full">Get Started</button>
+                        </div>
+                    </div>
+
+                    <!-- VIP Program -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">Exclusive</div>
+                            <h3 class="text-xl font-medium mb-2">VIP Program</h3>
+                            <p class="text-purple-100">Exclusive rewards & benefits</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Join our VIP program for enhanced odds, faster withdrawals, personal account management, and exclusive events.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Status:</span>
+                                <span class="text-sm text-muted-foreground">Ongoing</span>
+                            </div>
+                            <button class="btn btn-primary w-full">Learn More</button>
+                        </div>
+                    </div>
+
+                    <!-- Reload Bonus -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">Weekly</div>
+                            <h3 class="text-xl font-medium mb-2">Reload Bonus</h3>
+                            <p class="text-green-100">25% bonus on deposits</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Get a 25% bonus on all deposits made every Friday. Keep your account topped up with extra betting funds.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Next:</span>
+                                <span class="text-sm text-muted-foreground">This Friday</span>
+                            </div>
+                            <button class="btn btn-primary w-full">Reload Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Free Bets -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">Special</div>
+                            <h3 class="text-xl font-medium mb-2">Free Bets</h3>
+                            <p class="text-orange-100">Daily free bet opportunities</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Earn free bets through our daily challenges and special promotions. More ways to win without risk.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Today's:</span>
+                                <span class="text-sm text-muted-foreground">$25 Free Bet</span>
+                            </div>
+                            <button class="btn btn-primary w-full">Claim Free Bet</button>
+                        </div>
+                    </div>
+
+                    <!-- Loyalty Points -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-red-700 p-6 text-white">
+                            <div class="badge bg-white/20 text-white mb-4">Loyalty</div>
+                            <h3 class="text-xl font-medium mb-2">Loyalty Points</h3>
+                            <p class="text-indigo-100">Earn points with every bet</p>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm text-muted-foreground mb-4">
+                                Earn loyalty points with every bet placed. Redeem points for cash, free bets, and exclusive merchandise.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium">Rate:</span>
+                                <span class="text-sm text-muted-foreground">1 point per $10</span>
+                            </div>
+                            <button class="btn btn-primary w-full">View Points</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms & Conditions -->
+        <section class="py-12 bg-muted/20">
+            <div class="container px-4">
+                <h2 class="text-3xl font-medium mb-8 text-center">Terms & Conditions</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-medium mb-4">General Terms</h3>
+                            <ul class="text-sm text-muted-foreground space-y-2">
+                                <li>• All promotions are subject to verification</li>
+                                <li>• Players must be 18+ to participate</li>
+                                <li>• One promotion per player unless stated</li>
+                                <li>• Wagering requirements apply to bonus funds</li>
+                                <li>• Promotions cannot be combined unless specified</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium mb-4">Important Notes</h3>
+                            <ul class="text-sm text-muted-foreground space-y-2">
+                                <li>• Bonus funds expire after 30 days</li>
+                                <li>• Minimum odds requirements may apply</li>
+                                <li>• Withdrawals may be restricted during promotions</li>
+                                <li>• We reserve the right to modify terms</li>
+                                <li>• Full terms available upon request</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-muted/30 border-t">
+        <div class="container px-4 py-12">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
+                <!-- Sports -->
+                <div>
+                    <h3 class="font-medium mb-4">Sports</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">NFL</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">NBA</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">MLB</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Soccer</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Tennis</a></li>
+                    </ul>
+                </div>
+
+                <!-- Betting -->
+                <div>
+                    <h3 class="font-medium mb-4">Betting</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Betting</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Futures</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Props</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Parlays</a></li>
+                    </ul>
+                </div>
+
+                <!-- Casino -->
+                <div>
+                    <h3 class="font-medium mb-4">Casino</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Slots</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Blackjack</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Roulette</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Dealer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="font-medium mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Chat</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h3 class="font-medium mb-4">Company</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Partner Logos Section -->
+            <div class="py-8 border-t">
+                <div class="grid grid-cols-2 md:flex md:flex-row items-center justify-center gap-4 w-full">
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-mts.png" alt="MTS Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-bookieblitz.png" alt="Bookie Blitz Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-beatthefish.png" alt="Beat The Fish Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-bmr.png" alt="BMR Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="pt-8 border-t flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="font-medium text-lg mb-4">&copy; 2025 WagerWeb.eu</span>
+                </div>
+                <p class="text-sm text-muted-foreground text-center px-6">
+                    Established in 1994, WagerWeb is one of the oldest online Sportsbooks. with a perfect track record for paying customers. WagerWeb Sportsbook, offers the widest range of online sport leagues & gaming competitions to bet on. Here you can bet on every major sports league including baseball, soccer, CFL football, tennis, golf, boxing and more. WagerWeb is not limited to sports betting only, we also have a wide range of Casino games for you. Fund your WagerWeb betting account and get cash bonuses and cashback on all sports bets. So, what are you waiting for? Join WagerWeb now and start betting on your favorite games.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
