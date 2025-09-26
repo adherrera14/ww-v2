@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racebook - Horse Racing Betting | WagerWeb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Bai Jamjuree', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              'background': 'var(--background)',
+              'foreground': 'var(--foreground)',
+              'muted': {
+                DEFAULT: 'var(--muted)',
+                'foreground': 'var(--muted-foreground)'
+              },
+              'card': {
+                DEFAULT: 'var(--card)',
+                'foreground': 'var(--card-foreground)'
+              },
+              'border': 'var(--border)'
+            }
+          },
+          container: {
+            center: true,
+            padding: '1rem',
+          }
+        },
+        darkMode: 'class'
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-background text-foreground dark">
+    <!-- Header -->
+    <header class="header sticky top-0 z-50 w-full border-b backdrop-blur">
+        <div class="container flex h-16 items-center justify-between px-4">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 logo">
+                <span class="font-medium text-lg sm:inline-block ww">WagerWeb</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="sports.html" class="hover:text-red-600 transition-colors">Sports</a>
+                <a href="livebetting.html" class="hover:text-red-600 transition-colors">Live Betting</a>
+                <a href="casino.html" class="hover:text-red-600 transition-colors">Casino</a>
+                <a href="racebook.html" class="hover:text-red-600 transition-colors text-red-600">Racebook</a>
+                <a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a>
+            </nav>
+
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button class="btn btn-outline">Login</button>
+                <button class="btn btn-primary">Register</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex md:hidden items-center space-x-2">
+                <button id="mobileMenuToggle" class="btn-ghost p-2">
+                    <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="closeIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="md:hidden border-t bg-background hidden">
+            <nav class="container px-4 py-4 space-y-3">
+                <a href="sports.html" class="block py-2 hover:text-red-600 transition-colors">Sports</a>
+                <a href="livebetting.html" class="block py-2 hover:text-red-600 transition-colors">Live Betting</a>
+                <a href="casino.html" class="block py-2 hover:text-red-600 transition-colors">Casino</a>
+                <a href="racebook.html" class="block py-2 hover:text-red-600 transition-colors text-red-600">Racebook</a>
+                <a href="promotions.html" class="block py-2 hover:text-red-600 transition-colors">Promotions</a>
+                <div class="flex space-x-3 pt-3">
+                    <button class="btn btn-outline flex-1">Login</button>
+                    <button class="btn btn-primary flex-1">Register</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero relative overflow-hidden bg-gradient-to-br from-red-900/90 to-red-800/80">
+            <div class="absolute inset-0">
+                <img src="hero.jpg" alt="Horse Racing" class="w-full h-full object-cover opacity-30">
+                <div class="absolute inset-0 bg-gradient-to-r from-red-900/70 to-transparent"></div>
+            </div>
+            <div class="container relative px-4 py-24 md:py-32">
+                <div class="max-w-4xl">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-horse text-red-400 text-2xl"></i>
+                            <span class="text-red-400 font-semibold uppercase tracking-wider text-sm">Horse Racing</span>
+                        </div>
+                        <div class="h-px bg-red-400 flex-1"></div>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Premium <span class="text-red-400">Racebook</span><br>
+                        Experience
+                    </h1>
+                    <p class="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl">
+                        From Triple Crown races to tracks worldwide. Get full track odds, weekly 5% cashback, and the fastest betting platform in the industry.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button class="btn btn-primary btn-lg px-8">
+                            <i class="fas fa-horse-head mr-2"></i>
+                            Start Racing Bets
+                        </button>
+                        <button class="btn btn-outline btn-lg px-8">
+                            <i class="fas fa-trophy mr-2"></i>
+                            View Live Races
+                        </button>
+                    </div>
+                    
+                    <!-- Racing Stats -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-black/30 backdrop-blur-sm rounded-xl p-4 border border-red-400/20">
+                            <div class="text-2xl font-bold text-red-400">150+</div>
+                            <div class="text-sm text-muted-foreground">Tracks Worldwide</div>
+                        </div>
+                        <div class="bg-black/30 backdrop-blur-sm rounded-xl p-4 border border-red-400/20">
+                            <div class="text-2xl font-bold text-red-400">5%</div>
+                            <div class="text-sm text-muted-foreground">Weekly Cashback</div>
+                        </div>
+                        <div class="bg-black/30 backdrop-blur-sm rounded-xl p-4 border border-red-400/20">
+                            <div class="text-2xl font-bold text-red-400">30</div>
+                            <div class="text-sm text-muted-foreground">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section class="py-20">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Racebook</h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Experience the thrill of horse racing with our comprehensive betting platform designed for both newcomers and seasoned handicappers.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Full Track Odds -->
+                    <div class="group bg-gradient-to-br from-red-600/10 to-red-700/5 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-red-400/10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-percentage text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Full Track Odds</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Get full track odds at major and minor tracks worldwide. No reduced payouts - you get the same odds as at the track.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i>Churchill Downs</li>
+                            <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i>Santa Anita</li>
+                            <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i>Belmont Park</li>
+                            <li class="flex items-center"><i class="fas fa-check text-red-600 mr-2"></i>Del Mar</li>
+                        </ul>
+                    </div>
+
+                    <!-- Weekly Cashback -->
+                    <div class="group bg-gradient-to-br from-emerald-600/10 to-emerald-700/5 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-emerald-400/10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-coins text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">5% Weekly Cashback</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Every Monday, claim your weekly 5% cashback on racebook losses. Get back on the horse with our cashback program.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2"></i>Automatic Processing</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2"></i>No Minimum Loss</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2"></i>All Major Tracks</li>
+                            <li class="flex items-center"><i class="fas fa-check text-emerald-600 mr-2"></i>Weekly Payouts</li>
+                        </ul>
+                    </div>
+
+                    <!-- Fast Platform -->
+                    <div class="group bg-gradient-to-br from-blue-600/10 to-blue-700/5 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-blue-400/10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-bolt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Lightning Fast</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Make your picks in seconds with our streamlined interface. Quick betting, instant confirmations, real-time updates.
+                        </p>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>One-Click Betting</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>Live Odds Updates</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>Instant Results</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-600 mr-2"></i>Mobile Optimized</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Racing Categories -->
+        <section class="py-20 bg-muted/20">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Global Racing Coverage</h2>
+                    <p class="text-lg text-muted-foreground">
+                        From prestigious Triple Crown races to international tracks, we cover the most exciting horse racing events worldwide.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Triple Crown -->
+                    <div class="bg-gradient-to-br from-yellow-600/20 to-amber-600/20 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-amber-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-crown text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Triple Crown</h3>
+                        <p class="text-sm text-muted-foreground mb-3">Kentucky Derby, Preakness, Belmont Stakes</p>
+                        <div class="text-xs text-yellow-600 font-semibold">Premium Events</div>
+                    </div>
+
+                    <!-- American Tracks -->
+                    <div class="bg-gradient-to-br from-red-600/20 to-red-700/20 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-flag-usa text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">American Tracks</h3>
+                        <p class="text-sm text-muted-foreground mb-3">Santa Anita, Gulfstream, Saratoga</p>
+                        <div class="text-xs text-red-600 font-semibold">Daily Racing</div>
+                    </div>
+
+                    <!-- International -->
+                    <div class="bg-gradient-to-br from-green-600/20 to-emerald-600/20 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-globe text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">International</h3>
+                        <p class="text-sm text-muted-foreground mb-3">Australia, UK, Japan, Dubai</p>
+                        <div class="text-xs text-green-600 font-semibold">24/7 Coverage</div>
+                    </div>
+
+                    <!-- Harness Racing -->
+                    <div class="bg-gradient-to-br from-purple-600/20 to-indigo-600/20 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-horse text-white text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Harness Racing</h3>
+                        <p class="text-sm text-muted-foreground mb-3">Standardbred racing across North America</p>
+                        <div class="text-xs text-purple-600 font-semibold">Specialized</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bet Types -->
+        <section class="py-20">
+            <div class="container px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Complete Betting Options</h2>
+                        <p class="text-lg text-muted-foreground mb-8">
+                            From simple win bets to complex exotic wagers, we offer every betting option available at the track.
+                        </p>
+
+                        <!-- Bet Types Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-muted/20 rounded-lg p-4">
+                                <h4 class="font-semibold mb-2 text-red-600">Straight Wagers</h4>
+                                <ul class="text-sm text-muted-foreground space-y-1">
+                                    <li>• Win</li>
+                                    <li>• Place</li>
+                                    <li>• Show</li>
+                                    <li>• Across the Board</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-muted/20 rounded-lg p-4">
+                                <h4 class="font-semibold mb-2 text-red-600">Exotic Wagers</h4>
+                                <ul class="text-sm text-muted-foreground space-y-1">
+                                    <li>• Exacta</li>
+                                    <li>• Trifecta</li>
+                                    <li>• Superfecta</li>
+                                    <li>• Quinella</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-muted/20 rounded-lg p-4">
+                                <h4 class="font-semibold mb-2 text-red-600">Multi-Race</h4>
+                                <ul class="text-sm text-muted-foreground space-y-1">
+                                    <li>• Daily Double</li>
+                                    <li>• Pick 3</li>
+                                    <li>• Pick 4</li>
+                                    <li>• Pick 6</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-muted/20 rounded-lg p-4">
+                                <h4 class="font-semibold mb-2 text-red-600">Advanced</h4>
+                                <ul class="text-sm text-muted-foreground space-y-1">
+                                    <li>• Boxed Bets</li>
+                                    <li>• Wheeled Bets</li>
+                                    <li>• Key Bets</li>
+                                    <li>• Part Wheels</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Element -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-red-600/20 to-red-700/20 rounded-2xl p-8 text-center border border-red-400/20">
+                            <div class="grid grid-cols-3 gap-4 mb-6">
+                                <!-- Racing Silks -->
+                                <div class="aspect-square bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex flex-col items-center justify-center text-white relative overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-yellow-400/20 to-transparent"></div>
+                                    <div class="relative z-10 text-center">
+                                        <div class="text-3xl mb-1">🏇</div>
+                                        <div class="text-xs font-bold uppercase tracking-wider">Jockey</div>
+                                        <div class="text-xs opacity-80">Silks</div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 group-hover:h-2 transition-all duration-300"></div>
+                                </div>
+
+                                <!-- Trophy -->
+                                <div class="aspect-square bg-gradient-to-br from-yellow-600 to-amber-600 rounded-xl flex flex-col items-center justify-center text-white relative overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-yellow-400/20 to-transparent"></div>
+                                    <div class="relative z-10 text-center">
+                                        <div class="text-3xl mb-1">🏆</div>
+                                        <div class="text-xs font-bold uppercase tracking-wider">Winner</div>
+                                        <div class="text-xs opacity-80">Circle</div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-amber-400 group-hover:h-2 transition-all duration-300"></div>
+                                </div>
+
+                                <!-- Starting Gate -->
+                                <div class="aspect-square bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex flex-col items-center justify-center text-white relative overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-green-400/20 to-transparent"></div>
+                                    <div class="relative z-10 text-center">
+                                        <div class="text-3xl mb-1">🚪</div>
+                                        <div class="text-xs font-bold uppercase tracking-wider">Gate</div>
+                                        <div class="text-xs opacity-80">Start</div>
+                                    </div>
+                                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-emerald-400 group-hover:h-2 transition-all duration-300"></div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold mb-4">Track Experience</h3>
+                            <p class="text-muted-foreground mb-6">
+                                Feel the excitement of being at the track with our immersive racing experience and real-time updates.
+                            </p>
+                            
+                            <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-4 text-white relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-transparent"></div>
+                                <div class="relative z-10">
+                                    <div class="text-sm opacity-80 mb-1">Next Post Time</div>
+                                    <div class="text-2xl font-bold">2:45 PM EST</div>
+                                    <div class="text-xs mt-1 opacity-70">🏇 Churchill Downs Race 7</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust & Security -->
+        <section class="py-20 bg-muted/20">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Trusted Since 1994</h2>
+                    <p class="text-lg text-muted-foreground">
+                        Three decades of reliable service, secure transactions, and satisfied customers worldwide.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-red-600 mb-2">30+</div>
+                        <div class="text-sm text-muted-foreground">Years Online</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-red-600 mb-2">500K+</div>
+                        <div class="text-sm text-muted-foreground">Happy Customers</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-red-600 mb-2">24/7</div>
+                        <div class="text-sm text-muted-foreground">Customer Support</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-red-600 mb-2">100%</div>
+                        <div class="text-sm text-muted-foreground">Secure Payouts</div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="mt-16 text-center">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-transparent"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4">Ready to Start Racing?</h3>
+                            <p class="text-lg mb-6 opacity-90">
+                                Join thousands of racing fans who trust WagerWeb for their horse racing bets. 
+                                Get full track odds and 5% weekly cashback on all major tracks.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button class="btn bg-white text-red-600 hover:bg-gray-100 px-8 py-3">
+                                    <i class="fas fa-user-plus mr-2"></i>
+                                    Create Account
+                                </button>
+                                <button class="btn btn-outline border-white text-white hover:bg-white hover:text-red-600 px-8 py-3">
+                                    <i class="fas fa-info-circle mr-2"></i>
+                                    Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t">
+        <div class="container px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="font-bold text-xl ww">WagerWeb</span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">
+                        Established in 1994, WagerWeb is one of the oldest online sportsbooks with a perfect track record for paying customers.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="sports.html" class="hover:text-red-600 transition-colors">Sportsbook</a></li>
+                        <li><a href="livebetting.html" class="hover:text-red-600 transition-colors">Live Betting</a></li>
+                        <li><a href="casino.html" class="hover:text-red-600 transition-colors">Online Casino</a></li>
+                        <li><a href="racebook.html" class="hover:text-red-600 transition-colors">Racebook</a></li>
+                        <li><a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Banking</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">General Rules</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-muted-foreground hover:text-red-600 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-red-600 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-muted-foreground hover:text-red-600 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+                <p>&copy; 2025 WagerWeb. All rights reserved. | Must be 21 or older. Please gamble responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

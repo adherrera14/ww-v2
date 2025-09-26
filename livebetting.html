@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Betting - WagerWeb | Real-Time Sports Betting Action</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Bai Jamjuree', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              'background': 'var(--background)',
+              'foreground': 'var(--foreground)',
+              'muted': {
+                DEFAULT: 'var(--muted)',
+                'foreground': 'var(--muted-foreground)'
+              },
+              'card': {
+                DEFAULT: 'var(--card)',
+                'foreground': 'var(--card-foreground)'
+              },
+              'border': 'var(--border)'
+            }
+          },
+          container: {
+            center: true,
+            padding: '1rem',
+          }
+        },
+        darkMode: 'class'
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-background text-foreground dark">
+    <!-- Header -->
+    <header class="header sticky top-0 z-50 w-full border-b backdrop-blur">
+        <div class="container flex h-16 items-center justify-between px-4">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 logo">
+                <span class="font-medium text-lg sm:inline-block ww">WagerWeb</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="sports.html" class="hover:text-red-600 transition-colors">Sports</a>
+                <a href="livebetting.html" class="text-red-600 font-medium transition-colors">Live Betting</a>
+                <a href="casino.html" class="hover:text-red-600 transition-colors">Casino</a>
+                <a href="racebook.html" class="hover:text-red-600 transition-colors">Racebook</a>
+                <a href="promotions.html" class="hover:text-red-600 transition-colors">Promotions</a>
+            </nav>
+
+            <!-- Desktop Actions -->
+            <div class="hidden md:flex items-center space-x-3">
+                <button class="btn btn-outline">Login</button>
+                <button class="btn btn-primary">Register</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex md:hidden items-center space-x-2">
+                <button id="mobileMenuToggle" class="btn-ghost p-2">
+                    <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="closeIcon" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="md:hidden border-t bg-background hidden">
+            <nav class="container px-4 py-4 space-y-3">
+                <a href="sports.html" class="block py-2 hover:text-red-600 transition-colors">Sports</a>
+                <a href="livebetting.html" class="block py-2 text-red-600 font-medium transition-colors">Live Betting</a>
+                <a href="casino.html" class="block py-2 hover:text-red-600 transition-colors">Casino</a>
+                <a href="racebook.html" class="block py-2 hover:text-red-600 transition-colors">Racebook</a>
+                <a href="promotions.html" class="block py-2 hover:text-red-600 transition-colors">Promotions</a>
+                <a href="#" class="block py-2 hover:text-red-600 transition-colors">Banking</a>
+                <div class="flex space-x-3 pt-3">
+                    <button class="btn btn-outline flex-1">Login</button>
+                    <button class="btn btn-primary flex-1">Register</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-muted/20 border-b">
+        <div class="container px-4 py-2">
+            <nav class="text-sm">
+                <a href="index.html" class="text-red-600 hover:underline">Home</a>
+                <span class="mx-2 text-muted-foreground">/</span>
+                <span class="text-muted-foreground">Live Betting</span>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Live Betting Hero Section -->
+        <section class="relative py-16 lg:py-24 overflow-hidden">
+            <!-- Background with overlay -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#111111]/95 to-red-950/85 z-10"></div>
+                <img src="hero.jpg" alt="Live Betting" class="w-full h-full object-cover hero-bg-dark">
+            </div>
+            
+            <!-- Content -->
+            <div class="relative z-20 container px-4">
+                <div class="max-w-4xl mx-auto text-center text-white">
+                    <div class="mb-8">
+                        <span class="inline-block px-4 py-2 bg-black border border-red-500/30 rounded-full text-white text-sm font-medium mb-6">
+                            🔴 LIVE Real-Time Action
+                        </span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Live Betting <span class="text-red-500">In the Heat</span><br>
+                        of the Moment
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Experience the excitement of real-time sports betting. Make your predictions live during the action, 
+                        watch minute by minute what's happening on the field, and turn any game around with our live betting options.
+                    </p>
+                    
+                    <!-- Live Stats Display -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-12">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-red-400/30">
+                            <div class="flex items-center justify-center mb-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                                <div class="text-2xl font-bold text-red-400">LIVE</div>
+                            </div>
+                            <div class="text-sm text-gray-300">Games Available</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                            <div class="text-2xl font-bold text-red-400 mb-1">50+ Markets</div>
+                            <div class="text-sm text-gray-300">Per Live Game</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                            <div class="text-2xl font-bold text-red-400 mb-1">Mobile</div>
+                            <div class="text-sm text-gray-300">Optimized</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button class="btn btn-primary px-8 py-3 text-lg font-semibold">
+                            View Live Games
+                        </button>
+                        <button class="btn btn-outline border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 text-lg font-semibold">
+                            Watch Live Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animated Background Elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-red-500/20 rounded-full blur-xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-red-600/10 rounded-full blur-2xl animate-pulse"></div>
+        </section>
+
+        <!-- Why Live Betting Section -->
+        <section class="py-20 bg-background">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Live Betting is the Future</h2>
+                    <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                        Live betting is one of the most important trends in the sports betting world. Experience the thrill of making 
+                        predictions in real-time as the game unfolds before your eyes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Real-Time Action -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bolt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Real-Time Excitement</h3>
+                        <p class="text-muted-foreground mb-4">Feel the adrenaline rush of betting live during the action. Every moment brings new opportunities and excitement.</p>
+                        <div class="text-red-600 font-medium">Instant Thrills</div>
+                    </div>
+
+                    <!-- Turn Around Games -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-sync-alt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Turn Games Around</h3>
+                        <p class="text-muted-foreground mb-4">Game not going as expected? Our live betting options give you the chance to turn it around and make cash.</p>
+                        <div class="text-red-600 font-medium">Comeback Opportunities</div>
+                    </div>
+
+                    <!-- Mobile Optimized -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Mobile Optimized</h3>
+                        <p class="text-muted-foreground mb-4">Our software is designed to perform at its best on your mobile device, bet from anywhere in the world.</p>
+                        <div class="text-red-600 font-medium">Anywhere, Anytime</div>
+                    </div>
+
+                    <!-- Minute by Minute -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-clock text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Minute-by-Minute</h3>
+                        <p class="text-muted-foreground mb-4">Watch what's happening on the field minute by minute and make informed decisions based on live action.</p>
+                        <div class="text-red-600 font-medium">Live Updates</div>
+                    </div>
+
+                    <!-- Multiple Markets -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-list-alt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">50+ Live Markets</h3>
+                        <p class="text-muted-foreground mb-4">Choose from over 50 betting markets per live game. From next goal scorer to total corners and everything in between.</p>
+                        <div class="text-red-600 font-medium">Maximum Choice</div>
+                    </div>
+
+                    <!-- Heat of Moment -->
+                    <div class="card p-8 text-center hover:shadow-lg transition-all duration-300 rounded-xl group">
+                        <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-fire text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Heat of the Moment</h3>
+                        <p class="text-muted-foreground mb-4">Make predictions in the heat of the moment when emotions run high and opportunities present themselves.</p>
+                        <div class="text-red-600 font-medium">Pure Adrenaline</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Betting Markets Section -->
+        <section class="py-20 bg-muted/20">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Comprehensive Live Markets</h2>
+                    <p class="text-lg text-muted-foreground">
+                        Bet on every aspect of live games with our extensive selection of in-play markets.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Football Live Markets -->
+                    <div class="card p-6 hover:shadow-lg transition-all duration-300 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-football-ball text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Football Live</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li>• Next team to score</li>
+                            <li>• Live point spreads</li>
+                            <li>• Quarter/half totals</li>
+                            <li>• Drive outcomes</li>
+                            <li>• Player props</li>
+                            <li>• Time of next score</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t">
+                            <span class="text-red-600 font-medium text-sm">50+ Markets Available</span>
+                        </div>
+                    </div>
+
+                    <!-- Basketball Live Markets -->
+                    <div class="card p-6 hover:shadow-lg transition-all duration-300 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-basketball-ball text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Basketball Live</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li>• Live spreads & totals</li>
+                            <li>• Quarter winners</li>
+                            <li>• Next basket scorer</li>
+                            <li>• Lead at half</li>
+                            <li>• Player rebounds</li>
+                            <li>• Time-out props</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t">
+                            <span class="text-red-600 font-medium text-sm">40+ Markets Available</span>
+                        </div>
+                    </div>
+
+                    <!-- Soccer Live Markets -->
+                    <div class="card p-6 hover:shadow-lg transition-all duration-300 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-futbol text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Soccer Live</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li>• Next goal scorer</li>
+                            <li>• Match result</li>
+                            <li>• Total corners</li>
+                            <li>• Cards & bookings</li>
+                            <li>• Half-time score</li>
+                            <li>• Penalty awarded</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t">
+                            <span class="text-red-600 font-medium text-sm">60+ Markets Available</span>
+                        </div>
+                    </div>
+
+                    <!-- Baseball Live Markets -->
+                    <div class="card p-6 hover:shadow-lg transition-all duration-300 rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-baseball-ball text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">Baseball Live</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-muted-foreground">
+                            <li>• Next inning runs</li>
+                            <li>• Live run line</li>
+                            <li>• Total runs</li>
+                            <li>• Next batter result</li>
+                            <li>• Strikeout props</li>
+                            <li>• Home run props</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t">
+                            <span class="text-red-600 font-medium text-sm">35+ Markets Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Sports -->
+                <div class="mt-12 text-center">
+                    <p class="text-muted-foreground mb-6">
+                        Live betting available for Tennis, Golf, Hockey, MMA, Boxing, Esports and many more sports
+                    </p>
+                    <button class="btn btn-primary px-8 py-3">View All Live Games</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Betting Features -->
+        <section class="py-20 bg-background">
+            <div class="container px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Advanced Live Betting Features</h2>
+                    <p class="text-lg text-muted-foreground">
+                        Experience cutting-edge live betting technology designed for the modern bettor.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <!-- Features List -->
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-tachometer-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Lightning-Fast Updates</h3>
+                                <p class="text-muted-foreground">Odds update in real-time as the action unfolds. Never miss a betting opportunity with our instant updates.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-cash-register text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Cash Out Options</h3>
+                                <p class="text-muted-foreground">Secure your profits or minimize losses with our cash-out feature available on selected live bets.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Live Statistics</h3>
+                                <p class="text-muted-foreground">Access comprehensive live stats and data to make informed betting decisions during the game.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-video text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Live Match Tracker</h3>
+                                <p class="text-muted-foreground">Follow the action with our live match tracker and visual representations of game progress.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Element -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-red-600/20 to-red-700/10 rounded-2xl p-8 text-center">
+                            <div class="mb-6">
+                                <div class="w-20 h-20 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-broadcast-tower text-white text-3xl"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Live Right Now</h3>
+                                <p class="text-muted-foreground">Over 100 live games available daily</p>
+                            </div>
+                            
+                            <!-- Mock Live Games List -->
+                            <div class="space-y-3 text-left">
+                                <div class="bg-white/10 rounded-lg p-3 flex justify-between items-center">
+                                    <div class="text-sm">
+                                        <div class="font-medium">Lakers vs Warriors</div>
+                                        <div class="text-red-400 text-xs">Q2 08:42</div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                                        <span class="text-xs bg-red-600 text-white px-2 py-1 rounded">LIVE</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white/10 rounded-lg p-3 flex justify-between items-center">
+                                    <div class="text-sm">
+                                        <div class="font-medium">Chiefs vs Patriots</div>
+                                        <div class="text-red-400 text-xs">Q3 12:15</div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                                        <span class="text-xs bg-red-600 text-white px-2 py-1 rounded">LIVE</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white/10 rounded-lg p-3 flex justify-between items-center">
+                                    <div class="text-sm">
+                                        <div class="font-medium">Real Madrid vs Barcelona</div>
+                                        <div class="text-red-400 text-xs">78' MIN</div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                                        <span class="text-xs bg-red-600 text-white px-2 py-1 rounded">LIVE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section class="py-20 bg-muted/20">
+            <div class="container px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Start Live Betting Today</h2>
+                    <p class="text-lg text-muted-foreground mb-12">
+                        Open your WagerWeb account right now and get ready to enjoy your games like never before!
+                    </p>
+
+                    <!-- Steps -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">1</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Create Account</h3>
+                            <p class="text-muted-foreground">Sign up for your WagerWeb account in just minutes</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">2</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Fund Account</h3>
+                            <p class="text-muted-foreground">Make your first deposit and claim your welcome bonus</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-white font-bold text-xl">3</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Start Live Betting</h3>
+                            <p class="text-muted-foreground">Choose from hundreds of live games and markets</p>
+                        </div>
+                    </div>
+
+                    <!-- Final CTA -->
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Experience Live Betting Like Never Before</h3>
+                        <p class="text-red-100 mb-6">
+                            Join millions of bettors who trust WagerWeb for the most exciting live betting experience. 
+                            Bet live during the action, at any moment of any game, from anywhere in the world.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button class="btn bg-white text-red-600 hover:bg-gray-100 px-8 py-3 font-semibold">
+                                Start Live Betting
+                            </button>
+                            <button class="btn border-white text-white hover:bg-white hover:text-red-600 px-8 py-3 font-semibold">
+                                View Live Games
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-muted/30 border-t">
+        <div class="container px-4 py-12">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
+                <!-- Sports -->
+                <div>
+                    <h3 class="font-medium mb-4">Sports</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">NFL</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">NBA</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">MLB</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Soccer</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Tennis</a></li>
+                    </ul>
+                </div>
+
+                <!-- Betting -->
+                <div>
+                    <h3 class="font-medium mb-4">Betting</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Betting</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Futures</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Props</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Parlays</a></li>
+                    </ul>
+                </div>
+
+                <!-- Casino -->
+                <div>
+                    <h3 class="font-medium mb-4">Casino</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Slots</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Blackjack</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Roulette</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Dealer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="font-medium mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Live Chat</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h3 class="font-medium mb-4">Company</h3>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-foreground transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-foreground transition-colors">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Partner Logos Section -->
+            <div class="py-8 border-t">
+                <div class="grid grid-cols-2 md:flex md:flex-row items-center justify-center gap-4 w-full">
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-mts.png" alt="MTS Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-bookieblitz.png" alt="Bookie Blitz Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-beatthefish.png" alt="Beat The Fish Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                    <div class="flex justify-center md:flex-1">
+                        <img src="logo-bmr.png" alt="BMR Logo" class="max-h-8 md:max-h-12 w-auto object-contain hover:opacity-80 transition-opacity">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="pt-8 border-t flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="font-medium text-lg mb-4">&copy; 2025 WagerWeb.eu</span>
+                </div>
+                <p class="text-sm text-muted-foreground text-center px-6">
+                    Established in 1994, WagerWeb is one of the oldest online Sportsbooks with a perfect track record for paying customers. Experience the excitement of live betting with real-time odds, instant updates, and comprehensive markets available on your mobile device from anywhere in the world.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
